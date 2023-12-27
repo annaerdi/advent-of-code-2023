@@ -1,7 +1,7 @@
-use std::fs::File;
-use std::io::Read;
 use regex::Regex;
 use std::collections::HashMap;
+use std::fs::File;
+use std::io::Read;
 
 pub fn part_2(filename: &str) {
     let file = File::open(filename);
@@ -11,20 +11,21 @@ pub fn part_2(filename: &str) {
 
     let re = Regex::new(r"(one|two|three|four|five|six|seven|eight|nine|ten|[0-9])").unwrap();
 
-    let mut word_to_digit = HashMap::new();
-    word_to_digit.insert("one", '1');
-    word_to_digit.insert("two", '2');
-    word_to_digit.insert("three", '3');
-    word_to_digit.insert("four", '4');
-    word_to_digit.insert("five", '5');
-    word_to_digit.insert("six", '6');
-    word_to_digit.insert("seven", '7');
-    word_to_digit.insert("eight", '8');
-    word_to_digit.insert("nine", '9');
+    let mut word_to_digit = HashMap::from([
+        ("zero", '0'),
+        ("one", '1'),
+        ("two", '2'),
+        ("three", '3'),
+        ("four", '4'),
+        ("five", '5'),
+        ("six", '6'),
+        ("seven", '7'),
+        ("eight", '8'),
+        ("nine", '9'),
+    ]);
 
     // iterate over each line in the contents -> lines() is splitting the contents by newline characters
     for line in contents.lines() {
-
         let mut number_string = String::new();
         let mut start = 0;
 
@@ -44,7 +45,6 @@ pub fn part_2(filename: &str) {
         let two_digit_number: i32 = two_digit_string.parse().unwrap();
         sum += two_digit_number;
         //println!("line: {}, number extraced: {} ---- two digit ---> {}", line, number_string, two_digit_number);
-
     }
     println!("{}", sum);
 }
