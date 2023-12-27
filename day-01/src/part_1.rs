@@ -17,7 +17,7 @@ pub fn part_1(filename: &str) {
         let mut digits = String::new();
         // collect all digits into a string
         for c in line.chars() {
-            if c.is_digit(10) {
+            if c.is_ascii_digit() {
                 digits.push(c);
             }
         }

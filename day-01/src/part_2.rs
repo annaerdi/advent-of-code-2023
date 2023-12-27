@@ -11,7 +11,7 @@ pub fn part_2(filename: &str) {
 
     let re = Regex::new(r"(one|two|three|four|five|six|seven|eight|nine|ten|[0-9])").unwrap();
 
-    let mut word_to_digit = HashMap::from([
+    let word_to_digit = HashMap::from([
         ("zero", '0'),
         ("one", '1'),
         ("two", '2'),
